@@ -23,6 +23,8 @@ app.use(
   })
 );
 
+const port = process.env.PORT || 3000;
+
 mongoose
   .connect(
     `mongodb+srv://utkow1991:${
@@ -33,8 +35,8 @@ mongoose
     { useNewUrlParser: true }
   )
   .then(() => {
-    app.listen(3000, () => {
-      console.log("Server started with db...");
+    app.listen(port, () => {
+      console.log('\x1b[1m%s\x1b[0m', `\nServer started with db... \n\nhttp://localhost:${port}/graphql`);
     });
   })
   .catch(err => {
