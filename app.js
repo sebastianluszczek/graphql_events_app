@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const graphqlHttp = require("express-graphql");
 const mongoose = require("mongoose");
+const isAuth = require('./middleware/is-auth');
 
 // env variables from .env file recognized
 const dotenv = require("dotenv");
@@ -13,6 +14,8 @@ const graphqlResolvers = require('./graphql/resolvers/index');
 const app = express();
 
 app.use(bodyParser.json());
+
+app.use(isAuth);
 
 app.use(
   "/graphql",
