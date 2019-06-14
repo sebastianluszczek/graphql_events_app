@@ -2,14 +2,14 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const graphqlHttp = require("express-graphql");
 const mongoose = require("mongoose");
-const isAuth = require('./middleware/is-auth');
+const isAuth = require("./middleware/is-auth");
 
 // env variables from .env file recognized
 const dotenv = require("dotenv");
 dotenv.config();
 
-const graphqlSchema = require('./graphql/schema/index');
-const graphqlResolvers = require('./graphql/resolvers/index');
+const graphqlSchema = require("./graphql/schema/index");
+const graphqlResolvers = require("./graphql/resolvers/index");
 
 const app = express();
 
@@ -26,7 +26,7 @@ app.use(
   })
 );
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 
 mongoose
   .connect(
@@ -39,7 +39,10 @@ mongoose
   )
   .then(() => {
     app.listen(port, () => {
-      console.log('\x1b[1m%s\x1b[0m', `\nServer started with db... \n\nhttp://localhost:${port}/graphql`);
+      console.log(
+        "\x1b[1m%s\x1b[0m",
+        `\nServer started with db... \n\nhttp://localhost:${port}/graphql`
+      );
     });
   })
   .catch(err => {

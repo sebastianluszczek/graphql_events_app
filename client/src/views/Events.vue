@@ -5,8 +5,25 @@
 </template>
 
 <script>
+import gql from "graphql-tag";
+
 export default {
-  name: "events"
+  name: "events",
+  apollo: {
+    events: gql`
+      query {
+        events {
+          _id
+          title
+          description
+          date
+          creator {
+            email
+          }
+        }
+      }
+    `
+  }
 };
 </script>
 
