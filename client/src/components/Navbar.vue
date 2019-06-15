@@ -3,16 +3,28 @@
     <h1 class="logo">EventSide</h1>
     <div id="nav">
       <router-link class="nav-link" to="/">Home</router-link>
-      <router-link class="nav-link" to="/auth">Auth</router-link>
       <router-link class="nav-link" to="/events">Events</router-link>
-      <router-link class="nav-link" to="/bookings">Bookings</router-link>
+      <router-link class="nav-link" to="/auth" v-if="!userId">Auth</router-link>
+      <router-link class="nav-link" to="/bookings" v-if="userId">Bookings</router-link>
+      <a class="nav-link" @click="logout()" v-if="userId">
+        Logout
+        <i class="material-icons md-18">exit_to_app</i>
+      </a>
     </div>
   </div>
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex";
+
 export default {
-  name: "navbar"
+  name: "navbar",
+  computed: {
+    ...mapGetters(["userId"])
+  },
+  methods: {
+    ...mapActions(["logout"])
+  }
 };
 </script>
 
@@ -27,6 +39,8 @@ export default {
   justify-content: space-between;
   padding: 1rem 3rem;
   align-items: center;
+  background-color: #fff;
+  z-index: 10;
 
   #nav {
     .nav-link {
@@ -34,8 +48,13 @@ export default {
       text-decoration: none;
       color: #2c3e50;
       font-weight: bold;
+      cursor: pointer;
       &.router-link-exact-active {
         color: #42b983;
+      }
+      i {
+        position: relative;
+        top: 5px;
       }
     }
   }

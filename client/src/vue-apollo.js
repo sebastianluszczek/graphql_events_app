@@ -14,7 +14,7 @@ const AUTH_TOKEN = "apollo-token";
 
 // Http endpoint
 const httpEndpoint =
-  process.env.VUE_APP_GRAPHQL_HTTP || "http://localhost:4000/graphql";
+  process.env.VUE_APP_GRAPHQL_HTTP || "http://localhost:4001/graphql";
 
 // Config
 const defaultOptions = {
@@ -39,10 +39,15 @@ const defaultOptions = {
   // link: myLink
 
   // Override default cache
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
 
   // Override the way the Authorization header is set
-  // getAuth: (tokenName) => ...
+  getAuth: () => {
+    // get the authentication token from local storage if it exists
+    const token = "Bearer " + localStorage.getItem("access_token");
+    // return the headers to the context so httpLink can read them
+    return token || "";
+  }
 
   // Additional ApolloClient options
   // apollo: { ... }

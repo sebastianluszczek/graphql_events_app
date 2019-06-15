@@ -1,28 +1,31 @@
 <template>
   <div class="auth">
     <h1>The Events Page</h1>
+    <Event v-for="event in events" :key="event._id" :event="event"></Event>
   </div>
 </template>
 
 <script>
-import gql from "graphql-tag";
+import Event from "@/components/Event";
+
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "events",
-  apollo: {
-    events: gql`
-      query {
-        events {
-          _id
-          title
-          description
-          date
-          creator {
-            email
-          }
-        }
-      }
-    `
+  data() {
+    return {};
+  },
+  computed: {
+    ...mapGetters(['events'])
+  },
+  methods: {
+    ...mapActions(["getAllEvents"])
+  },
+  created() {
+    this.getAllEvents();
+  },
+  components: {
+    Event
   }
 };
 </script>

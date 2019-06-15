@@ -1,32 +1,32 @@
 <template>
   <div class="auth">
-    <form action class="auth-form" v-if="loginForm">
+    <form action class="auth-form" v-if="loginForm" @submit.prevent="submitLogin(credentials)">
       <h1>Sign In</h1>
       <div class="input-wrapper">
         <label for="email">Email</label>
-        <input type="email" id="email" v-model="email">
+        <input type="email" id="email" v-model="credentials.email">
       </div>
       <div class="input-wrapper">
         <label for="password">Password</label>
-        <input type="password" id="password" v-model="password">
+        <input type="password" id="password" v-model="credentials.password">
       </div>
       <div class="form-actions">
-        <button type="button" class="btn" @click="login = false">Switch to SignUp</button>
-        <button class="btn" @click.prevent="submitLogin()">Submit</button>
+        <button type="button" class="btn" @click="loginForm = false">Switch to SignUp</button>
+        <button class="btn">Submit</button>
       </div>
     </form>
-    <form action class="auth-form" v-else>
+    <form action class="auth-form" v-else @submit.prevent="submitRegister(credentials)" autocomplete="off">
       <h1>Create Account</h1>
       <div class="input-wrapper">
         <label for="email">Email</label>
-        <input type="email" id="email">
+        <input type="email" id="email" v-model="credentials.email">
       </div>
       <div class="input-wrapper">
         <label for="password">Password</label>
-        <input type="password" id="password">
+        <input type="password" id="password" v-model="credentials.password">
       </div>
       <div class="form-actions">
-        <button type="button" class="btn" @click="login = true">Switch to SignIn</button>
+        <button type="button" class="btn" @click="loginForm = true">Switch to SignIn</button>
         <button type="submit" class="btn">Submit</button>
       </div>
     </form>
@@ -35,49 +35,23 @@
 
 <script>
 import gql from "graphql-tag";
+import { mapActions } from "vuex";
+
+import { LOGIN_USER_QUERY, CREATE_USER_MUTATION } from "@/gql/graphql";
 
 export default {
   name: "auth",
   data() {
     return {
       loginForm: true,
-      email: "",
-      password: "",
-      skipQuery: true
+      credentials: {
+        email: '',
+        password: ''
+      }
     };
   },
-  apollo: {
-    signIn: {
-      query: gql`
-        query Login($email: String!, $password: String!) {
-          login(email: $email, password: $password) {
-            token
-          }
-        }
-      `,
-      // Reactive variables
-      variables() {
-        return {
-          email: this.email,
-          password: this.password
-        };
-      },
-      // Disable the query
-      skip() {
-        return this.skipQuery;
-      },
-      // Optional result hook
-      result({ data, loading, networkStatus }) {
-        this.data = data;
-        console.log("We got some result!");
-      }
-    }
-  },
   methods: {
-    submitLogin() {
-      this.skipQuery = false;
-      this.$apollo.queries.signIn.refetch();
-    }
+    ...mapActions(["authUser", "submitRegister", "submitLogin"]) 
   }
 };
 </script>
@@ -115,16 +89,6 @@ export default {
       display: flex;
       justify-content: flex-end;
       margin-top: 2rem;
-
-      .btn {
-        background-color: #42b983;
-        color: #fff;
-        text-transform: uppercase;
-        font-weight: bold;
-        border: none;
-        padding: 10px 30px;
-        margin-left: 1rem;
-      }
     }
   }
 }

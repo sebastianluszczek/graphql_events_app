@@ -8,7 +8,7 @@ Vue.config.productionTip = false;
 
 new Vue({
   router,
-  store,
   apolloProvider: createProvider(),
+  store,
   render: h => h(App)
 }).$mount("#app");
