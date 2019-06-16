@@ -30,26 +30,34 @@
 
 ---
 
-### Hosted project
-
-[Space News App](https://news-board-vue.firebaseapp.com/)
-
----
 
 ### Build Setup
 
+You will have to run two localhosts, one for server and one for Vue client. 
+For server side:
 ``` bash
-# install dependencies
+# after cloning repo install dependencies for server
 npm install
 
-# serve with hot reload at localhost:8080
-npm run serve
+# run serve with hot reload at localhost:4001
+npm run dev
 
-# build for production with minification
+# or build for production with minification
 npm run build
 
-# build for production and view the bundle analyzer report
-npm run build --report
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+After this, you should run another terminal for client side:
+``` bash
+# navigate to client folder
+cd client
+
+# install all dependencies from client/package.json
+npm install
+
+# and start server on http://localhost:8080
+npm run serve
+
+```
+
+After runing server you have access to graphiQL app at http://localhost:40001/graphql
