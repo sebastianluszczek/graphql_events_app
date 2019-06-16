@@ -1,6 +1,6 @@
 <template>
   <div class="auth">
-    <h1>The Bookings Page</h1>
+    <h1>My bookings</h1>
     <Booking v-for="booking in bookings" :booking="booking" :key="booking._id"></Booking>
   </div>
 </template>
@@ -20,9 +20,6 @@ export default {
   },
   methods: {
     ...mapActions(["getAllBookings"])
-  },
-  created() {
-    this.getAllBookings();
   }
 };
 </script>

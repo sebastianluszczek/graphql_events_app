@@ -30,11 +30,7 @@ const port = process.env.PORT || 4001;
 
 mongoose
   .connect(
-    `mongodb+srv://utkow1991:${
-      process.env.MONGO_PASS
-    }@cluster0-ympqd.mongodb.net/${
-      process.env.MONGO_DB
-    }?retryWrites=true&w=majority`,
+    process.env.MONGODB_URL,
     { useNewUrlParser: true }
   )
   .then(() => {

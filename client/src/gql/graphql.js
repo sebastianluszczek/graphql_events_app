@@ -38,6 +38,7 @@ export const BOOKINGS_QUERY = gql`
         date
         _id
         price
+        description
         creator {
           email
         }
@@ -55,10 +56,37 @@ export const CREATE_USER_MUTATION = gql`
   }
 `;
 
-export const BOOK_EVENT_MUTATION = gql`
-  mutation BookEventMutation($eventID: ID!) {
-    createUser(eventID: $eventID) {
+export const CREATE_EVENT_MUTATION = gql`
+  mutation CreateEVENTMutation($eventInput: EventInput!) {
+    createUser(eventInput: $eventInput) {
       _id
+      title
+    }
+  }
+`;
+
+export const BOOK_EVENT_MUTATION = gql`
+  mutation BookEventMutation($eventId: ID!) {
+    bookEvent(eventId: $eventId) {
+      _id
+      event {
+        _id
+        title
+      }
+      user {
+        _id
+        email
+      }
+    }
+  }
+`;
+
+export const CANCEL_BOOKING_MUTATION = gql`
+  mutation CancelBookingMutation($bookingId: ID!) {
+    cancelBooking(bookingId: $bookingId) {
+      _id
+      title
+      date
     }
   }
 `;

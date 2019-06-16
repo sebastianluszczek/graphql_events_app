@@ -27,10 +27,10 @@ export default {
     Navbar
   },
   methods: {
-    ...mapActions(["logout", "authUser"]),
-    ...mapMutations(["changeAuthUserStatus"])
+    ...mapActions(["logout", "authUser", "getAllEvents", "getAllBookings"]),
   },
   created() {
+    this.getAllEvents();
     const token = window.localStorage.getItem("access_token");
     if (!token) {
       this.$router.push({ path: "/auth" });
@@ -43,6 +43,7 @@ export default {
         const userId = window.localStorage.getItem("userId");
         this.authUser({ token, userId });
         this.isLoaded = true;
+        this.getAllBookings();
       }
     }
   }

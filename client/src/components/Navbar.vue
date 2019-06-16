@@ -1,8 +1,8 @@
 <template>
   <div class="navbar">
-    <h1 class="logo">EventSide</h1>
+    <h1 class="logo"><span>Event</span>Side</h1>
     <div id="nav">
-      <router-link class="nav-link" to="/">Home</router-link>
+      <!-- <router-link class="nav-link" to="/">Home</router-link> -->
       <router-link class="nav-link" to="/events">Events</router-link>
       <router-link class="nav-link" to="/auth" v-if="!userId">Auth</router-link>
       <router-link class="nav-link" to="/bookings" v-if="userId">Bookings</router-link>
@@ -41,6 +41,16 @@ export default {
   align-items: center;
   background-color: #fff;
   z-index: 10;
+  .logo {
+    font-size: 40px;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    span {
+      font-weight: normal;
+      text-transform: capitalize;
+    }
+  }
 
   #nav {
     .nav-link {
@@ -49,7 +59,7 @@ export default {
       color: #2c3e50;
       font-weight: bold;
       cursor: pointer;
-      &.router-link-exact-active {
+      &.router-link-active {
         color: #42b983;
       }
       i {

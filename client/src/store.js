@@ -11,7 +11,9 @@ import {
   LOGIN_USER_QUERY,
   CREATE_USER_MUTATION,
   BOOK_EVENT_MUTATION,
-  BOOKINGS_QUERY
+  BOOKINGS_QUERY,
+  CANCEL_BOOKING_MUTATION,
+  CREATE_EVENT_MUTATION
 } from "@/gql/graphql";
 
 Vue.use(Vuex);
@@ -38,7 +40,7 @@ export default new Vuex.Store({
     },
     setBookings(state, bookings) {
       state.bookings = bookings.filter(booking => {
-        return booking.user._id === state.userId
+        return booking.user._id === state.userId;
       });
     }
   },
@@ -49,7 +51,8 @@ export default new Vuex.Store({
     getAllEvents({ commit }) {
       apollo
         .query({
-          query: EVENTS_QUERY
+          query: EVENTS_QUERY,
+          fetchPolicy: "no-cache"
         })
         .then(response => {
           console.log(response.data);
@@ -59,14 +62,63 @@ export default new Vuex.Store({
           console.log(err);
         });
     },
+    createEvent({ dispatch }, eventInput) {
+      apollo
+        .mutate({
+          mutation: CREATE_EVENT_MUTATION,
+          variables: {
+            eventInput
+          }
+        })
+        .then(response => {
+          console.log(response.data);
+          dispatch("getAllEvents");
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
     getAllBookings({ commit }) {
       apollo
         .query({
-          query: BOOKINGS_QUERY
+          query: BOOKINGS_QUERY,
+          fetchPolicy: "no-cache"
         })
         .then(response => {
           console.log(response.data);
           commit("setBookings", response.data.bookings);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    bookEvent({ dispatch }, eventId) {
+      apollo
+        .mutate({
+          mutation: BOOK_EVENT_MUTATION,
+          variables: {
+            eventId: eventId
+          }
+        })
+        .then(response => {
+          console.log(response.data);
+          dispatch("getAllBookings");
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    cancelBooking({ dispatch }, bookingId) {
+      apollo
+        .mutate({
+          mutation: CANCEL_BOOKING_MUTATION,
+          variables: {
+            bookingId: bookingId
+          }
+        })
+        .then(response => {
+          console.log(response.data);
+          dispatch("getAllBookings");
         })
         .catch(err => {
           console.log(err);

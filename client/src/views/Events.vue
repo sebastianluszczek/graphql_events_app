@@ -1,12 +1,12 @@
 <template>
   <div class="auth">
-    <h1>The Events Page</h1>
-    <Event v-for="event in events" :key="event._id" :event="event"></Event>
+    <h1>Events</h1>
+    <EventBox v-for="event in events" :key="event._id" :event="event"></EventBox>
   </div>
 </template>
 
 <script>
-import Event from "@/components/Event";
+import EventBox from "@/components/EventBox";
 
 import { mapActions, mapGetters } from "vuex";
 
@@ -25,7 +25,7 @@ export default {
     this.getAllEvents();
   },
   components: {
-    Event
+    EventBox
   }
 };
 </script>
