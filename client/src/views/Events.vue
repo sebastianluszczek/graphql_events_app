@@ -1,6 +1,9 @@
 <template>
-  <div class="auth">
-    <h1>Events</h1>
+  <div class="events">
+    <div class="title">
+      <h1>Events</h1>
+      <router-link class="btn" to="/events/add" v-if="userId"><i class="material-icons md-18">playlist_add</i> Add</router-link>
+    </div>
     <EventBox v-for="event in events" :key="event._id" :event="event"></EventBox>
   </div>
 </template>
@@ -16,7 +19,7 @@ export default {
     return {};
   },
   computed: {
-    ...mapGetters(['events'])
+    ...mapGetters(["events", "userId"])
   },
   methods: {
     ...mapActions(["getAllEvents"])
@@ -30,4 +33,19 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss">
+.events {
+  .title {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8rem;
+    margin-bottom: 3rem;
+
+    h1 {
+      width: 200px;
+      font-size: 72px;
+      font-weight: normal;
+    }
+  }
+}
+</style>

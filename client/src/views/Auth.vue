@@ -11,7 +11,7 @@
         <input type="password" id="password" v-model="credentials.password">
       </div>
       <div class="form-actions">
-        <button type="button" class="btn" @click="loginForm = false">Switch to SignUp</button>
+        <button type="button" class="btn" @click="loginForm = false">to SignUp</button>
         <button class="btn">Submit</button>
       </div>
     </form>
@@ -26,7 +26,7 @@
         <input type="password" id="password" v-model="credentials.password">
       </div>
       <div class="form-actions">
-        <button type="button" class="btn" @click="loginForm = true">Switch to SignIn</button>
+        <button type="button" class="btn" @click="loginForm = true">to SignIn</button>
         <button type="submit" class="btn">Submit</button>
       </div>
     </form>
@@ -63,7 +63,6 @@ export default {
     max-width: 80%;
     margin: 10rem auto;
     padding: 3rem;
-    border: 1px solid #333;
 
     .input-wrapper {
       margin-top: 20px;

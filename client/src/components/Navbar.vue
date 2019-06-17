@@ -31,7 +31,7 @@ export default {
 <style lang="scss">
 .navbar {
   width: 100%;
-  height: 60px;
+  height: 70px;
   position: fixed;
   top: 0;
   left: 0;
@@ -39,12 +39,13 @@ export default {
   justify-content: space-between;
   padding: 1rem 3rem;
   align-items: center;
-  background-color: #fff;
+  background-color: #0b0c10;
   z-index: 10;
   .logo {
     font-size: 40px;
     font-weight: bold;
     text-transform: uppercase;
+    color: #66fcf1;
 
     span {
       font-weight: normal;
@@ -54,13 +55,19 @@ export default {
 
   #nav {
     .nav-link {
-      padding: 10px 30px;
+      padding: 5px 10px;
+      margin: 0 20px;
       text-decoration: none;
-      color: #2c3e50;
+      color: #c5c6c7;
       font-weight: bold;
+      transition: .3s;
+      &:hover {
+        color: #66fcf1;
+      }
       cursor: pointer;
       &.router-link-active {
-        color: #42b983;
+        color: #66fcf1;
+        border-bottom: 2px solid;
       }
       i {
         position: relative;

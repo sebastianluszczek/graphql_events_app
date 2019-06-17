@@ -1,6 +1,8 @@
 <template>
-  <div class="auth">
-    <h1>My bookings</h1>
+  <div class="bookings">
+    <div class="title">
+      <h1>My bookings</h1>
+    </div>
     <Booking v-for="booking in bookings" :booking="booking" :key="booking._id"></Booking>
   </div>
 </template>
@@ -24,4 +26,19 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss">
+.bookings {
+  .title {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8rem;
+    margin-bottom: 3rem;
+
+    h1 {
+      font-size: 72px;
+      font-weight: normal;
+    }
+  }
+}
+
+</style>

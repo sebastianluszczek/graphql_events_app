@@ -24,6 +24,7 @@ module.exports = {
       title: args.eventInput.title,
       description: args.eventInput.description,
       price: args.eventInput.price,
+      avatar: args.eventInput.avatar,
       date: new Date(args.eventInput.date),
       creator: req.userId
     });

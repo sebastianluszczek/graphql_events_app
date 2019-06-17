@@ -29,7 +29,7 @@ export default {
   methods: {
     ...mapActions(["logout", "authUser", "getAllEvents", "getAllBookings"]),
   },
-  created() {
+  mounted() {
     this.getAllEvents();
     const token = window.localStorage.getItem("access_token");
     if (!token) {
@@ -62,11 +62,11 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #0b0c10;
   text-align: left;
 
   .main {
-    margin: 6rem auto;
+    margin: 70px auto;
     width: 70%;
     max-width: 1200px;
   }

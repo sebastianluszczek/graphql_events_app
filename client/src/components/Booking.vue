@@ -6,7 +6,7 @@
     <p>{{booking.event.creator.email}}</p>
     <div class="fixed-actions">
       <router-link class="btn" :to="{name: 'singleEvent', params:{eventId: booking.event._id}}">Show Event</router-link>
-      <button class="btn" v-if="userId" @click="cancelBooking(booking._id)">Cancel</button>
+      <button class="btn" v-if="userId" @click="cancelBooking(booking._id)"><i class="material-icons md-18">delete_forever</i> Cancel</button>
     </div>
   </div>
 </template>
@@ -29,7 +29,6 @@ export default {
 <style lang="scss">
 .booking {
   padding: 1rem 2rem 3rem;
-  border: 1px solid #333;
   margin-top: 1rem;
   position: relative;
   p {

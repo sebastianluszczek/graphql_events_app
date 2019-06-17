@@ -11,6 +11,9 @@ const eventSchema = new Schema({
     type: String,
     required: true
   },
+  avatar: {
+    type: String
+  },
   price: {
     type: Number,
     required: true

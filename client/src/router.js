@@ -35,6 +35,11 @@ export default new Router({
       component: () => import("./views/Events.vue")
     },
     {
+      path: "/events/add",
+      name: "addEvent",
+      component: () => import("./views/AddEvent.vue")
+    },
+    {
       path: "/events/:eventId",
       name: "singleEvent",
       component: () => import("./views/SingleEvent.vue")

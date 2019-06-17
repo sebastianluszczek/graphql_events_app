@@ -17,6 +17,7 @@ export const EVENTS_QUERY = gql`
       title
       description
       date
+      avatar
       creator {
         email
       }
@@ -58,7 +59,7 @@ export const CREATE_USER_MUTATION = gql`
 
 export const CREATE_EVENT_MUTATION = gql`
   mutation CreateEVENTMutation($eventInput: EventInput!) {
-    createUser(eventInput: $eventInput) {
+    createEvent(eventInput: $eventInput) {
       _id
       title
     }

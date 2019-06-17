@@ -2,18 +2,36 @@
 
 body {
   font-family: "Montserrat";
+  overflow-x: hidden;
+  background-color: #fff;
+  color: #0b0c10;
   #app {
     .btn {
-      background-color: #42b983;
-      color: #fff;
+      background-color: #66fcf1;
+      color: #0b0c10;
       text-transform: uppercase;
       font-weight: bold;
       border: none;
-      padding: 10px 30px;
+      width: 140px;
+      height: 40px;
       margin-left: 1rem;
       font-size: 1rem;
       font-family: inherit;
       text-decoration: none;
+      display: inline-block;
+      line-height: 40px;
+      text-align: center;
+      box-shadow: 2px 2px 5px #333;
+      transition: .4s;
+      i {
+        position: relative;
+        top: 5px;
+      }
+
+      &:hover {
+        box-shadow: 4px 4px 10px #333;
+        transform: translate(-2px, -2px)
+      }
     }
   }
 }
