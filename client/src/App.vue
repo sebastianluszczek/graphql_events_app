@@ -3,7 +3,7 @@
     <Navbar/>
     <keep-alive>
       <transition name="slide-fade" mode="out-in">
-        <router-view class="main" />
+        <router-view class="main"/>
       </transition>
     </keep-alive>
   </div>
@@ -21,13 +21,13 @@ export default {
   data() {
     return {
       isLoaded: false
-    }
+    };
   },
   components: {
     Navbar
   },
   methods: {
-    ...mapActions(["logout", "authUser", "getAllEvents", "getAllBookings"]),
+    ...mapActions(["logout", "authUser", "getAllEvents", "getAllBookings"])
   },
   mounted() {
     this.getAllEvents();
@@ -37,6 +37,7 @@ export default {
     } else {
       const decodedToken = JSON.parse(atob(token.split(".")[1]));
       const timeNow = new Date().getTime();
+      console.log(`time ${decodedToken.exp * 1000 - timeNow}`);
       if (timeNow > decodedToken.exp * 1000) {
         this.logout();
       } else {

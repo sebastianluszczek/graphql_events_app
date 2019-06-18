@@ -40,7 +40,7 @@ export default {
 .event {
   position: relative;
   transition: 0.4s;
-  margin: 30px 0;
+  margin: 50px 0;
   .event-info {
     padding: 1rem 2rem 1rem;
     margin-top: 1rem;

@@ -1,4 +1,5 @@
 # EventSide (FullStack App)
+
 ### Node.js Express.js GraphQL MongoDB Vue.js Apollo
 
 > My first fullstack application with completed frontend side (Vue.js) and backend (Node + GraphQL).
@@ -7,7 +8,9 @@
 ---
 
 ## In project i use:
+
 ### For backend
+
 <p style="float: left">
 <img src="https://spectrum.imgix.net/communities/33d6ade9-d505-40f2-926d-b8836bdccdd0/graphql.png.0.7616626405032714?w=256&h=256&expires=1541894400000&ixlib=js-1.2.0&s=2dbd900fb5e88743c15fbdce89635429" alt="GraphQL" width="64" style="display: inline">
 <img src="http://www.tech-app.fr/wp-content/uploads/2015/04/nodejs.png" alt="Node.js" width="64" style="display: inline">
@@ -18,9 +21,8 @@
 </p>
 <p style="clear: both">
 
-
-
 ### For frontend
+
 <p style="float: left">
 <img src="https://cdn-images-1.medium.com/max/800/1*qiTJR-sO5ULMV1YqCItT8w.jpeg" alt="Vue.js" width="64" style="display: inline">
 <img src="https://g00glen00b.be/wp-content/uploads/2018/02/apollo-logo.png" alt="Apollo" width="64" style="display: inline">
@@ -30,33 +32,25 @@
 
 ---
 
-
 ### Build Setup
 
-You will have to run two localhosts, one for server and one for Vue client. 
-For server side:
-``` bash
+Concurrently npm package allow aplication to run two localhosts with one npm script:
+
+```bash
 # after cloning repo install dependencies for server
 npm install
 
-# run serve with hot reload at localhost:4001
+# and for client
+cd client && npm install
+
+# go back to project root directory
+cd ..
+
+# run dev-serve with hot reload at localhost:4001 for server and localhost:8080 for client
 npm run dev
 
 # or build for production with minification
 npm run build
-
-```
-
-After this, you should run another terminal for client side:
-``` bash
-# navigate to client folder
-cd client
-
-# install all dependencies from client/package.json
-npm install
-
-# and start server on http://localhost:8080
-npm run serve
 
 ```
 

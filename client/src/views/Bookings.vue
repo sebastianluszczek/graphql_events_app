@@ -22,6 +22,9 @@ export default {
   },
   methods: {
     ...mapActions(["getAllBookings"])
+  },
+  mounted() {
+    this.getAllBookings();
   }
 };
 </script>
@@ -40,5 +43,4 @@ export default {
     }
   }
 }
-
 </style>

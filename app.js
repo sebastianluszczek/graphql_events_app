@@ -29,15 +29,18 @@ app.use(
 const port = process.env.PORT || 4001;
 
 mongoose
-  .connect(
-    process.env.MONGODB_URL,
-    { useNewUrlParser: true }
-  )
+  .connect(process.env.MONGODB_URL, { useNewUrlParser: true })
   .then(() => {
     app.listen(port, () => {
       console.log(
-        "\x1b[1m%s\x1b[0m",
-        `\nServer started with db... \n\nhttp://localhost:${port}/graphql`
+        "\nServer App started at: \n- Local:",
+        "\x1b[36m",
+        `\thttp://localhost:${port}/graphql`,
+        "\x1b[0m",
+        "\n\nFor database we use Cloud wersion of MongoDB \n- Atlas:",
+        "\x1b[92m",
+        "\thttps://cloud.mongodb.com\n",
+        "\x1b[0m"
       );
     });
   })
